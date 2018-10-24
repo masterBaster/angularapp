@@ -1,3 +1,16 @@
-<p>
-  users works!
-</p>
+<p>Users:</p>
+<ul *ngIf="loaded && users?.length > 0">
+  <li *ngFor="let user of users">
+    <h3>{{ user.firstName }}, {{ user.lastName }}</h3>
+    <ul *ngIf="showExtended && user.age && user.address">
+      <li>{{user.address.city}}, {{user.address.street}}, {{user.address.state}}</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 *ngIf="users?.lenght == 0">No users found...</h2>
+
+<h2 *ngIf="!loaded">Loading users please...</h2>
+
+<!-- <ng-template #noUsers><h4>No user found...</h4></ng-template> -->
+
