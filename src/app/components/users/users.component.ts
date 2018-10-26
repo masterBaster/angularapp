@@ -13,8 +13,7 @@ export class UsersComponent implements OnInit {
   showExtended: boolean = true;
   loaded: boolean = true;
   enableAdd: boolean = true;
-  currentClasses = {};
-  currentStyle = {};
+
 
 
   constructor() { }
@@ -30,11 +29,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image: 'https://picsum.photos/600/600/?random',
         isActiv: true,
-        country: 'PL',
-        balance: 100,
-        registered: new Date('01/02/2018 08:30:00')
+        registered: new Date('01/02/2018 08:30:00'),
+        hide: true
       },
       {
         firstName: 'Paul',
@@ -45,11 +42,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image: 'https://picsum.photos/600/600/?gravity=west',
         isActiv: false,
-        country: 'USA',
-        balance: 90,
-        registered: new Date('05/12/2018 08:38:00')
+        registered: new Date('05/12/2018 08:38:00'), 
+        hide: true
       },
       {
         firstName: 'Mick',
@@ -60,11 +55,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image: 'https://picsum.photos/600/600/?gravity=east',
         isActiv: true,
-        country: 'BR',
-        balance: 80,
-        registered: new Date('08/19/2018 08:33:00')
+        registered: new Date('08/19/2018 08:33:00'), 
+        hide: true
       },
     ];
     this.loaded = true;
@@ -73,38 +66,13 @@ export class UsersComponent implements OnInit {
     //   firstName: 'David',
     //   lastName: 'Malkowski'
     //   })
-    this.setCurrentClasses();
-    this.setCurrentStyle();
   }
 
   addUser(user: User) {
     this.users.push(user);
   }
 
-  setCurrentClasses() {
-    this.currentClasses = {
-      'btn-success': this.enableAdd,
-      'big-text': this.showExtended
-    }
-  }
-
-  setCurrentStyle() {
-    this.currentStyle = {
-      'padding-top': this.showExtended ? '0' : '60px',
-      'font-size': this.showExtended ? '' : '40px'
-    }
-  }
-
-  getColor(country) {
-    switch (country) {
-      case 'UK':
-        return 'red';
-      case 'USA':
-        return 'blue';
-      case 'PL':
-        return 'red';
-      case 'BR':
-        return 'green';
-    }
+  toggleHide(user: User){
+    user.hide = !user.hide
   }
 }
