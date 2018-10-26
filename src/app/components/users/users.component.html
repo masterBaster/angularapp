@@ -1,18 +1,19 @@
 <p>Users:</p>
-<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3">Add new user...</button>
+<button [disabled]="!enableAdd" class="btn btn-block mb-3" [ngClass]="currentClasses">Add new user...</button>
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
-  <li class="card card-body mb-2" *ngFor="let user of users">
+  <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActiv" [style.border-color]="user.isActiv ? 'green' : ''">
     <div class="row">
       <div class="col-sm-4">
-        <img class="img-fluid" bind-src="user.image" *ngIf="showExtended && user.image">
+        <img class="img-fluid" bind-src="user.image" *ngIf="user.image">
         <!-- <img class="img-fluid" src={{user.image}} *ngIf="showExtended && user.image"> -->
         <!-- <img class="img-fluid" [src]="user.image" *ngIf="showExtended && user.image"> -->
       </div>
       <div class="col-sm-8">
-        <h3>{{ user.firstName }}, {{ user.lastName }}</h3>
+        <h3 [ngStyle]="currentStyle">{{ user.firstName }} {{ user.lastName }}</h3>
         <ul class="list-group" *ngIf="showExtended && user.age && user.address">
           <li class="list-group-item">{{user.age}}</li>
           <li class="list-group-item">{{user.address.city}}, {{user.address.street}}, {{user.address.state}}</li>
+          <li class="list-group-item" [ngStyle]="{color: getColor(user.country)}" >{{user.country}}</li>
         </ul>
       </div>
     </div>

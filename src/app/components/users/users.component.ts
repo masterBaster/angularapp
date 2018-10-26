@@ -10,9 +10,11 @@ export class UsersComponent implements OnInit {
 
   title = 'templete sytax';
   users: User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = true;
   enableAdd: boolean = true;
+  currentClasses = {};
+  currentStyle = {};
 
 
   constructor() { }
@@ -28,7 +30,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image:'https://picsum.photos/600/600/?random'
+        image: 'https://picsum.photos/600/600/?random',
+        isActiv: true,
+        country: 'PL'
       },
       {
         firstName: 'Paul',
@@ -39,7 +43,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image:'https://picsum.photos/600/600/?random'
+        image: 'https://picsum.photos/600/600/?gravity=west',
+        isActiv: false,
+        country: 'USA'
       },
       {
         firstName: 'Mick',
@@ -50,7 +56,9 @@ export class UsersComponent implements OnInit {
           city: 'Boston',
           state: 'MA'
         },
-        image:'https://picsum.photos/600/600/?random'
+        image: 'https://picsum.photos/600/600/?gravity=east',
+        isActiv: true,
+        country: 'BR'
       },
     ];
     this.loaded = true;
@@ -59,9 +67,38 @@ export class UsersComponent implements OnInit {
     //   firstName: 'David',
     //   lastName: 'Malkowski'
     //   })
+    this.setCurrentClasses();
+    this.setCurrentStyle();
   }
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  setCurrentClasses() {
+    this.currentClasses = {
+      'btn-success': this.enableAdd,
+      'big-text': this.showExtended
+    }
+  }
+
+  setCurrentStyle() {
+    this.currentStyle = {
+      'padding-top': this.showExtended ? '0' : '60px',
+      'font-size': this.showExtended ? '' : '40px'
+    }
+  }
+
+  getColor(country) {
+    switch (country) {
+      case 'UK':
+        return 'red';
+      case 'USA':
+        return 'blue';
+      case 'PL':
+        return 'red';
+      case 'BR':
+        return 'green';
+    }
   }
 }

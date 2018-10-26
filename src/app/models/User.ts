@@ -8,4 +8,6 @@ export interface User {
     state?: string
   },
   image?: string
+  isActiv?: boolean
+  country?: string
 }
