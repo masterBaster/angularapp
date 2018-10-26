@@ -10,4 +10,6 @@ export interface User {
   image?: string
   isActiv?: boolean
   country?: string
+  balance?: number
+  registered?: any
 }

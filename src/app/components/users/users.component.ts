@@ -10,7 +10,7 @@ export class UsersComponent implements OnInit {
 
   title = 'templete sytax';
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = true;
   enableAdd: boolean = true;
   currentClasses = {};
@@ -32,7 +32,9 @@ export class UsersComponent implements OnInit {
         },
         image: 'https://picsum.photos/600/600/?random',
         isActiv: true,
-        country: 'PL'
+        country: 'PL',
+        balance: 100,
+        registered: new Date('01/02/2018 08:30:00')
       },
       {
         firstName: 'Paul',
@@ -45,7 +47,9 @@ export class UsersComponent implements OnInit {
         },
         image: 'https://picsum.photos/600/600/?gravity=west',
         isActiv: false,
-        country: 'USA'
+        country: 'USA',
+        balance: 90,
+        registered: new Date('05/12/2018 08:38:00')
       },
       {
         firstName: 'Mick',
@@ -58,7 +62,9 @@ export class UsersComponent implements OnInit {
         },
         image: 'https://picsum.photos/600/600/?gravity=east',
         isActiv: true,
-        country: 'BR'
+        country: 'BR',
+        balance: 80,
+        registered: new Date('08/19/2018 08:33:00')
       },
     ];
     this.loaded = true;

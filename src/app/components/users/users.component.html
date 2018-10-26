@@ -9,11 +9,14 @@
         <!-- <img class="img-fluid" [src]="user.image" *ngIf="showExtended && user.image"> -->
       </div>
       <div class="col-sm-8">
-        <h3 [ngStyle]="currentStyle">{{ user.firstName }} {{ user.lastName }}</h3>
+        <h3 [ngStyle]="currentStyle">{{ user.firstName | uppercase }} {{ user.lastName }}</h3>
         <ul class="list-group" *ngIf="showExtended && user.age && user.address">
           <li class="list-group-item">{{user.age}}</li>
           <li class="list-group-item">{{user.address.city}}, {{user.address.street}}, {{user.address.state}}</li>
           <li class="list-group-item" [ngStyle]="{color: getColor(user.country)}" >{{user.country}}</li>
+          <li class="list-group-item">Balance {{user.balance | currency:"GBP":"symbol"}} until {{ 1 | percent}}</li>
+          <li class="list-group-item">Joined: {{user.registered | date}}</li>
+          <li class="list-group-item" ngNonBindable><pre>{{ 5 | number:"1.2"}}</pre></li>
         </ul>
       </div>
     </div>
