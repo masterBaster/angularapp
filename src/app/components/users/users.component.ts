@@ -7,12 +7,20 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  title = 'templete sytax';
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: null,
+    address: {
+      street: '',
+      city: '',
+      state: ''
+    }
+  }
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = true;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   showUserForm: boolean = false;
 
 
@@ -44,7 +52,7 @@ export class UsersComponent implements OnInit {
           state: 'MA'
         },
         isActiv: false,
-        registered: new Date('05/12/2018 08:38:00'), 
+        registered: new Date('05/12/2018 08:38:00'),
         hide: true
       },
       {
@@ -57,7 +65,7 @@ export class UsersComponent implements OnInit {
           state: 'MA'
         },
         isActiv: true,
-        registered: new Date('08/19/2018 08:33:00'), 
+        registered: new Date('08/19/2018 08:33:00'),
         hide: true
       },
     ];
@@ -69,20 +77,34 @@ export class UsersComponent implements OnInit {
     //   })
   }
 
-  addUser(user: User) {
-    this.users.push(user);
+  addUser() {
+    this.user.isActiv = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
+
+    // clear up our form after added user
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: null,
+      address: {
+        street: '',
+        city: '',
+        state: ''
+      }
+    }
   }
 
-  toggleHide(user: User){
+  toggleHide(user: User) {
     user.hide = !user.hide
   }
 
-  onSubmit(e){
+  onSubmit(e) {
     console.log('submitting form...')
     e.preventDefault();
   }
 
-  fireEvent(e){
+  fireEvent(e) {
     console.log(e.type);
     console.log(e.target.value)
   }
