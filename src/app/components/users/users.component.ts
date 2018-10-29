@@ -72,9 +72,8 @@ export class UsersComponent implements OnInit {
     user.hide = !user.hide
   }
 
-  onSubmit(e) {
-    console.log('submitting form...')
-    e.preventDefault();
+  onSubmit() {
+
   }
 
   fireEvent(e) {
