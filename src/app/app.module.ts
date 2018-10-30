@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 import { PostService } from './services/post.service';
 import { PostsComponent } from './components/posts/posts.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClient } from 'selenium-webdriver/http';
     UserComponent,
     UsersComponent,
     NavbarComponent,
-    PostsComponent
+    PostsComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
